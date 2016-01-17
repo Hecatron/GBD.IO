@@ -51,8 +51,8 @@
             'TabControl1
             '
             Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                Or System.Windows.Forms.AnchorStyles.Left) _
-                Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.TabControl1.Controls.Add(Me.TabPage1)
             Me.TabControl1.Controls.Add(Me.TabPage2)
             Me.TabControl1.Location = New System.Drawing.Point(12, 12)
@@ -101,7 +101,7 @@
             'ArgumentsTb
             '
             Me.ArgumentsTb.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.ArgumentsTb.Location = New System.Drawing.Point(104, 91)
             Me.ArgumentsTb.Name = "ArgumentsTb"
             Me.ArgumentsTb.Size = New System.Drawing.Size(447, 20)
@@ -110,7 +110,7 @@
             'WorkingDirTb
             '
             Me.WorkingDirTb.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.WorkingDirTb.Location = New System.Drawing.Point(104, 52)
             Me.WorkingDirTb.Name = "WorkingDirTb"
             Me.WorkingDirTb.Size = New System.Drawing.Size(447, 20)
@@ -146,7 +146,7 @@
             'ExePathTb
             '
             Me.ExePathTb.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.ExePathTb.Location = New System.Drawing.Point(104, 18)
             Me.ExePathTb.Name = "ExePathTb"
             Me.ExePathTb.Size = New System.Drawing.Size(418, 20)
@@ -203,8 +203,8 @@
             'StdOutTb
             '
             Me.StdOutTb.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                Or System.Windows.Forms.AnchorStyles.Left) _
-                Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.StdOutTb.Location = New System.Drawing.Point(89, 6)
             Me.StdOutTb.Multiline = True
             Me.StdOutTb.Name = "StdOutTb"
@@ -216,7 +216,7 @@
             'StdErrorTb
             '
             Me.StdErrorTb.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-                Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.StdErrorTb.Location = New System.Drawing.Point(89, 143)
             Me.StdErrorTb.Multiline = True
             Me.StdErrorTb.Name = "StdErrorTb"
@@ -247,7 +247,7 @@
             'StdInputTb
             '
             Me.StdInputTb.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-                Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.StdInputTb.Location = New System.Drawing.Point(89, 306)
             Me.StdInputTb.Multiline = True
             Me.StdInputTb.Name = "StdInputTb"
