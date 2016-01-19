@@ -1,15 +1,15 @@
-﻿Imports GBD.IO.Reactive.Stream
+﻿Imports System.ComponentModel
+Imports GBD.IO.Reactive.Stream
 
-' TODO handle additional values for state and events
-' TODO implement INotifyPropertyChanged for state and StartInfo
 ' TODO after the process terminates externally we need to stop the read process task via changing the state
+' TODO look into the Close method
 
 ''' <summary>
 ''' Wrapper around the system process / exe, to stream std out / std in / std err via reactive
 ''' extensions.
 ''' </summary>
 Public Class RxProcess
-    Implements IProcessStream
+    Implements IProcessStream, INotifyPropertyChanged
 
 #Region "Types"
 
@@ -17,8 +17,7 @@ Public Class RxProcess
     Public Enum ProcessState
         Stopped = 0
         Started = 1
-        Completed = 2
-        Errored = 3
+        Aborted = 2
     End Enum
 
 #End Region
@@ -42,6 +41,7 @@ Public Class RxProcess
         End Get
         Set(value As ProcessStartInfo)
             _Process.StartInfo = value
+            NotifyPropertyChanged("StartInfo")
         End Set
     End Property
 
@@ -53,6 +53,9 @@ Public Class RxProcess
         End Get
     End Property
     Protected Property _State As ProcessState
+
+    Public Event StateChange As EventHandler
+    Public Event PropertyChanged As PropertyChangedEventHandler Implements INotifyPropertyChanged.PropertyChanged
 
 #End Region
 
@@ -139,6 +142,8 @@ Public Class RxProcess
 
     ''' <summary> Common setup between constructors. </summary>
     Private Sub CommonSetup()
+        _Process.EnableRaisingEvents = True
+        AddHandler _Process.Exited, AddressOf ExitHandler
         _State = ProcessState.Stopped
 
         _RxStdOut = New RxStream(
@@ -165,8 +170,6 @@ Public Class RxProcess
                     If _State = ProcessState.Started AndAlso (_Process.HasExited = False) Then Return True
                     Return False
                 End Function)
-
-        AddHandler _Process.Exited, AddressOf ExitHandler
     End Sub
 
 #End Region
@@ -177,7 +180,19 @@ Public Class RxProcess
     ''' <param name="sender"> Source of the event. </param>
     ''' <param name="e">      Event information. </param>
     Protected Sub ExitHandler(sender As Object, e As EventArgs)
-        _State = ProcessState.Stopped
+        If _Process.ExitCode = 0 Then
+            _State = ProcessState.Stopped
+        Else
+            _State = ProcessState.Aborted
+        End If
+        RaiseEvent StateChange(Me, New EventArgs())
+        NotifyPropertyChanged("State")
+    End Sub
+
+    ''' <summary> Notifies a property changed. </summary>
+    ''' <param name="info"> The information. </param>
+    Private Sub NotifyPropertyChanged(info As String)
+        RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(info))
     End Sub
 
 #End Region
@@ -186,6 +201,8 @@ Public Class RxProcess
 
     ''' <summary> Starts the process. </summary>
     Public Sub Start()
+        If _State = ProcessState.Started Then Throw New Exception("Process is alreadt running")
+
         ' In order to observe / interact with the standard input / output we need to set the following
         StartInfo.RedirectStandardOutput = True
         StartInfo.RedirectStandardError = True
@@ -193,14 +210,21 @@ Public Class RxProcess
         StartInfo.UseShellExecute = False
         _Process.Start()
         _State = ProcessState.Started
+        RaiseEvent StateChange(Me, New EventArgs())
+        NotifyPropertyChanged("State")
     End Sub
 
     ''' <summary> Closes this process. </summary>
     Public Sub Close()
         _State = ProcessState.Stopped
-        If _Process IsNot Nothing Then _Process.Close()
+        If _Process IsNot Nothing Then
+            _Process.Close()
+            RaiseEvent StateChange(Me, New EventArgs())
+            NotifyPropertyChanged("State")
+        End If
     End Sub
 
 #End Region
+
 
 End Class

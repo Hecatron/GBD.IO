@@ -7,6 +7,9 @@
             Dim input As String = Console.In.ReadLine()
             Console.Out.WriteLine("STDOUT: " & input)
             Console.Error.WriteLine("STDERR: " & input)
+
+            If input = "CLOSEME" Then Exit While
+            If input = "CRASHME" Then Throw New Exception("Test Exception")
         End While
 
     End Sub

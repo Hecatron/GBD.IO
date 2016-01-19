@@ -129,7 +129,9 @@ Namespace App
             If LCase(IO.Path.GetExtension(ExePathTb.Text)) <> ".exe" Then GtkMsgBox("FIle is not an exe") : Exit Sub
 
             ' Create a new process
+            If RxProc IsNot Nothing Then RxProc.Close()
             RxProc = New RxProcess(ExePathTb.Text, ArgumentsTb.Text, WorkingDirTb.Text)
+            AddHandler RxProc.StateChange, AddressOf StateChange
 
             ' Subscribe to the output
             RxProc.RxStdOut.ObserveOn(SynchronizationContext.Current).Subscribe(
@@ -152,6 +154,17 @@ Namespace App
             ' Start the process
             RxProc.Start()
 
+        End Sub
+
+        ''' <summary> State change Handler. </summary>
+        ''' <param name="sender"> Source of the event. </param>
+        ''' <param name="e">      Event information. </param>
+        Private Sub StateChange(sender As Object, e As EventArgs)
+            If RxProc IsNot Nothing Then
+                lblState.Text = RxProc.State.ToString
+            Else
+                lblState.Text = ""
+            End If
         End Sub
 
         ''' <summary> Closes executable. </summary>

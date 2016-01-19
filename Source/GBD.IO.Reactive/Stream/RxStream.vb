@@ -218,7 +218,7 @@ Namespace Stream
                 ' Handle returned data
                 If _ObReadTask.IsCompleted Then
                     Dim ret(_ObReadTask.Result - 1) As Byte
-                    System.Buffer.BlockCopy(serialbuffer, 0, ret, 0, _ObReadTask.Result)
+                    Buffer.BlockCopy(serialbuffer, 0, ret, 0, _ObReadTask.Result)
                     observ.OnNext(ret)
                 End If
 

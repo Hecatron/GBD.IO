@@ -9,6 +9,7 @@ Namespace App
         ''' <summary> Used to load in the glade file resource as a window. </summary>
         Private _builder As Builder
 
+        Friend WithEvents lblState As Label
         Friend WithEvents ExeCombo1 As ComboBoxText
         Friend WithEvents ExeChooserButt As FileChooserButton
         Friend WithEvents ExePathTb As Entry
@@ -48,6 +49,7 @@ Namespace App
             builder.Autoconnect(Me)
 
             ' Link the Controls here instead of using Attributes
+            lblState = builder.GetObject("lblState")
             ExeCombo1 = builder.GetObject("ExeCombo1")
             ExeChooserButt = builder.GetObject("ExeChooserButt")
             ExePathTb = builder.GetObject("ExePathTb")
