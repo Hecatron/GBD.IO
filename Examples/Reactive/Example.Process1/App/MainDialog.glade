@@ -56,7 +56,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="entry1">
+              <object class="GtkEntry" id="WorkingDirTb">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="hexpand">True</property>
@@ -67,7 +67,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="entry2">
+              <object class="GtkEntry" id="ArgumentsTb">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
               </object>
@@ -82,7 +82,7 @@
                 <property name="can_focus">False</property>
                 <property name="column_spacing">10</property>
                 <child>
-                  <object class="GtkEntry" id="entry3">
+                  <object class="GtkEntry" id="ExePathTb">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="hexpand">True</property>
@@ -93,7 +93,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkFileChooserButton" id="filechooserbutton1">
+                  <object class="GtkFileChooserButton" id="ExeChooserButt">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="width_chars">0</property>
@@ -110,7 +110,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="LaunchButt">
+              <object class="GtkButton" id="LaunchExeButt">
                 <property name="label" translatable="yes">Launch</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -161,7 +161,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="button4">
+                  <object class="GtkButton" id="ClearStdOutButt">
                     <property name="label" translatable="yes">Clear</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
@@ -183,11 +183,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkTextView" id="textview1">
+              <object class="GtkTextView" id="StdOutTb">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
+                <property name="vscroll_policy">natural</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -214,7 +215,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="button5">
+                  <object class="GtkButton" id="ClearStdErrorButt">
                     <property name="label" translatable="yes">Clear</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
@@ -236,7 +237,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkTextView" id="textview2">
+              <object class="GtkTextView" id="StdErrorTb">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="vexpand">True</property>

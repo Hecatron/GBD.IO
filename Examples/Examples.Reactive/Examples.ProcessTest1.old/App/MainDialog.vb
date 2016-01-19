@@ -28,6 +28,9 @@ Namespace App
         ''' <param name="sender"> Source of the event. </param>
         ''' <param name="e">      Event information. </param>
         Private Sub MainDialog_Load(sender As Object, e As EventArgs) Handles Me.Load
+
+            Logger.Debug("Test123")
+
             ' Example values
             'ExePathTb.Text = ""
             'ArgumentsTb.Text = ""
@@ -37,8 +40,6 @@ Namespace App
             'ExePathTb.Text = "C:\Windows\System32\PING.EXE"
             'ArgumentsTb.Text = "192.168.111.1 -t"
             'WorkingDirTb.Text = "C:\Windows\System32"
-
-            Logger.Debug("Test123")
 
             ' Gdb values
             Dim gdbdir As String = "C:\Program Files (x86)\Arduino\hardware\tools\gcc-arm-none-eabi-4.8.3-2014q1\bin"
