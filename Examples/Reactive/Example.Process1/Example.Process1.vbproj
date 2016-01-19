@@ -182,6 +182,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Source\GBD.IO.Reactive.Diagnostics\GBD.IO.Reactive.Diagnostics.vbproj">
+      <Project>{7d9b97ae-8d6a-4bb1-bd64-17a3339145a6}</Project>
+      <Name>GBD.IO.Reactive.Diagnostics</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Source\GBD.IO.Reactive\GBD.IO.Reactive.vbproj">
       <Project>{043f2d86-52ca-48d2-bc5f-85ecffbb414a}</Project>
       <Name>GBD.IO.Reactive</Name>

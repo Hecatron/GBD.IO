@@ -8,8 +8,7 @@ Imports Gtk
 
 ' TODO
 ' 1. Test under Linux
-' 2. Remove old example
-' 3. Create a C# Copy
+' 2. Create a C# Copy
 
 Namespace App
 
@@ -187,18 +186,17 @@ Namespace App
             If RxProc IsNot Nothing Then
 
                 ' Working Example 1
-                Dim tmparr = Encoding.ASCII.GetBytes(StdInputTxt.Buffer.Text & RxProc.Process.StandardInput.NewLine)
-                RxProc.Process.StandardInput.BaseStream.Write(tmparr, 0, tmparr.Length)
-                RxProc.Process.StandardInput.BaseStream.Flush()
+                'Dim tmparr = Encoding.ASCII.GetBytes(StdInputTxt.Buffer.Text & RxProc.Process.StandardInput.NewLine)
+                'RxProc.Process.StandardInput.BaseStream.Write(tmparr, 0, tmparr.Length)
+                'RxProc.Process.StandardInput.BaseStream.Flush()
 
-                ' TODO this works, but the stream async calls don't
-                'RxProc.Process.StandardInput.WriteLine(StdInputTxt.Buffer.Text)
+                ' Working Example 2
+                RxProc.Process.StandardInput.WriteLine(StdInputTxt.Buffer.Text)
 
-                'RxProc.Process.StandardInput.Write(StdInputTb.Text)
+                ' Working Example 3
+                'RxProc.Process.StandardInput.Write(StdInputTxt.Buffer.Text)
                 'RxProc.Process.StandardInput.Write(RxProc.Process.StandardInput.NewLine)
 
-                ' This should work but doesn't
-                'RxProc.Uart.RxStdIn.Send(StdInputTb.Text)
             End If
         End Sub
 
